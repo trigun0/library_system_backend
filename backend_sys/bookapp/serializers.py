@@ -50,9 +50,11 @@ class BorrowSerializer(serializers.ModelSerializer):
         model = Borrow
         fields = [
             'id',
-            'book', 'book_id',
+            'book',
+            'book_id',
             'borrower_name',
             'borrowed_on',
+            'return_date',
             'rented_days',
-            'charges'
+            'charges',
         ]

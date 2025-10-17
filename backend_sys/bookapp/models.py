@@ -31,9 +31,10 @@ class Book(models.Model):
 
 # 4️⃣ Borrow Model (ForeignKey → Book)
 class Borrow(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name="borrow_records")
+    book = models.ForeignKey("Book", on_delete=models.CASCADE, related_name="borrow_records")
     borrower_name = models.CharField(max_length=100)
-    borrowed_on = models.DateField(auto_now_add=True)
+    borrowed_on = models.DateField()  # ✅ changed from auto_add so frontend can choose
+    return_date = models.DateField(blank=True, null=True)  # ✅ added new field
     rented_days = models.PositiveIntegerField()
     charges = models.DecimalField(max_digits=6, decimal_places=2)
 
